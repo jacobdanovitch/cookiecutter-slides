@@ -1,0 +1,40 @@
+\mode<presentation>
+{
+  \usetheme{metropolis}      % or try Darmstadt, Madrid, Warsaw, ...
+  \usecolortheme{default} % or try albatross, beaver, crane, ...
+  \usefonttheme{structurebold}  % or try serif, structurebold, ...
+  \setbeamercolor{background canvas}{bg=white}
+  \setbeamertemplate{navigation symbols}{}
+  \setbeamertemplate{bibliography item}{\insertbiblabel}
+  %\setbeamertemplate{caption}[numbered]
+} 
+\usepackage[english]{babel}
+% \usepackage[utf8x]{inputenc}
+\usepackage{listings}             % Include the listings-package
+\usepackage{bm}	% math package
+\usepackage{svg} % svg logo
+\usepackage{adjustbox}
+
+\hypersetup{
+    colorlinks = true,
+    linkcolor = {black},
+    urlcolor = {blue}
+}
+
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+\def\thisframelogos{}
+
+\newcommand{\framelogo}[1]{\def\thisframelogos{#1}}
+
+\addtobeamertemplate{frametitle}{}{%
+\begin{tikzpicture}[remember picture,overlay]
+\node[anchor=north east] at (current page.north east) {%
+    \foreach \img in \thisframelogos {%
+        %\hspace{.5ex}%
+        \vspace{10cm}
+        \includegraphics[height=10ex,trim=0 0 2cm 25cm]{\img}%
+        % \adjustbox{trim=0 0cm 0 0cm}{\includesvg[width=10em]{\img}}%
+    }%
+};
+\end{tikzpicture}}
